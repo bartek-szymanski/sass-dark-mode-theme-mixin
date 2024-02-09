@@ -1,0 +1,150 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:selector';
+@use 'sass:color';
+// ---
+
+// Mixins
+// ---
+
+// @param {string} $property : color, bg-color, fill, bg-img, border-color, box-shadow
+
+@mixin cssProperty($property) {
+	$property-value: var(--#{$property});
+
+	// Define shortcuts for long properties such as `background-color` and `background-image`.
+	@if $property == 'bg-color' {
+		background-color: $property-value;
+	} @else if $property == 'bg-img' {
+		background-image: url($property-value);
+	} @else {
+		// Set other properties normally.
+		#{$property}: $property-value;
+	}
+}
+
+// Mixin to define theme-specific CSS variables
+// @param {list} $properties-list :
+
+@mixin theme($properties-list...) {
+	// Process the list of property-color pairs.
+	$properties: meta.keywords($properties-list);
+
+	@each $property, $color in $properties {
+		$color1: list.nth($color, 1);
+		$color2: list.nth($color, 2);
+
+		// Define CSS custom property for light theme at root scope.
+		@at-root #{selector.nest(':root .theme--light', &)} {
+			@content;
+			--#{$property}: #{$color1};
+		}
+
+		// Define CSS custom property for dark theme at root scope.
+		@at-root #{selector.nest(':root .theme--dark', &)} {
+			@content;
+			--#{$property}: #{$color2};
+		}
+
+		@include cssProperty($property);
+	}
+}
+
+// Themes
+// ---
+
+.container {
+	@include theme(
+		$bg-color: (
+			white,
+			black,
+		)
+	);
+	@include theme(
+		$color: (
+			black,
+			white,
+		)
+	);
+}
+
+.heading {
+	@include theme(
+		$bg-color: (
+			black,
+			white,
+		)
+	);
+	@include theme(
+		$color: (
+			white,
+			black,
+		)
+	);
+}
+
+.btn-theme {
+	@include theme(
+		$bg-color: (
+			black,
+			white,
+		)
+	);
+	@include theme(
+		$color: (
+			white,
+			black,
+		)
+	);
+}
+
+// Theme colors for the `body` have to be defined in a normal way
+body {
+	&.theme--light {
+		background-color: white;
+		color: black;
+	}
+	&.theme--dark {
+		background-color: black;
+		color: white;
+	}
+}
+
+// Other styles
+// ---
+
+html {
+	box-sizing: border-box;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+	align-items: center;
+	flex-wrap: wrap;
+	align-content: center;
+	padding: 10vh 10vw;
+	transition-property: all;
+	transition-duration: 400ms;
+	transition-timing-function: ease-in-out;
+}
+
+.container {
+	padding: 5vh;
+}
+
+.heading {
+	padding: 20px;
+}
+
+.btn-theme {
+	margin: 20px auto;
+	padding: 20px;
+}

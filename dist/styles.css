@@ -1,0 +1,105 @@
+.container {
+  background-color: var(--bg-color);
+  color: var(--color);
+}
+:root .theme--light .container {
+  --bg-color: white;
+}
+
+:root .theme--dark .container {
+  --bg-color: black;
+}
+
+:root .theme--light .container {
+  --color: black;
+}
+
+:root .theme--dark .container {
+  --color: white;
+}
+
+.heading {
+  background-color: var(--bg-color);
+  color: var(--color);
+}
+:root .theme--light .heading {
+  --bg-color: black;
+}
+
+:root .theme--dark .heading {
+  --bg-color: white;
+}
+
+:root .theme--light .heading {
+  --color: white;
+}
+
+:root .theme--dark .heading {
+  --color: black;
+}
+
+.btn-theme {
+  background-color: var(--bg-color);
+  color: var(--color);
+}
+:root .theme--light .btn-theme {
+  --bg-color: black;
+}
+
+:root .theme--dark .btn-theme {
+  --bg-color: white;
+}
+
+:root .theme--light .btn-theme {
+  --color: white;
+}
+
+:root .theme--dark .btn-theme {
+  --color: black;
+}
+
+body.theme--light {
+  background-color: white;
+  color: black;
+}
+body.theme--dark {
+  background-color: black;
+  color: white;
+}
+
+html {
+  box-sizing: border-box;
+}
+html *,
+html *::before,
+html *::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 10vh 10vw;
+  transition-property: all;
+  transition-duration: 400ms;
+  transition-timing-function: ease-in-out;
+}
+
+.container {
+  padding: 5vh;
+}
+
+.heading {
+  padding: 20px;
+}
+
+.btn-theme {
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */
