@@ -6,6 +6,31 @@ With these powerful **Sass mixins**, you can seamlessly add **light and dark mod
 
 It's time to embrace better accessibility, and upgrade your users' experience!
 
+## Define colors for the light and dark theme
+
+```scss
+.button {
+	@include theme(
+		$background-color: ( // property
+			white, // light theme 
+			black, // dark theme 
+		)
+	);
+	@include theme(
+		$color: (
+			black,
+			white,
+		)
+	);
+	@include theme(
+		$border-color: (
+			black,
+			white,
+		)
+	);
+}
+```
+
 ## Sass Mixins
 
 ```scss
