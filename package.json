@@ -1,31 +1,31 @@
 {
-	"name": "sass-dark-mode-theme-mixin",
-	"version": "1.0.0",
-	"description": "With these powerful **Sass mixins**, you can seamlessly add **light and dark mode** functionality to legacy Sass projects.",
-	"main": "index.html",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"sass": "sass src/styles.scss dist/styles.css"
-	},
-	"keywords": [
-		"dark-mode",
-		"light-mode",
-		"dark theme",
-		"light theme",
-		"scss dark mode",
-		"sass dark mode",
-		"css dark mode",
-		"accessibility",
-		"sass",
-		"maintainability",
-		"scalability",
-		"legacy scss",
-		"legacy sass",
-		"mixins",
-		"mixin",
-		"sass mixin",
-		"scss mixin"
-	],
-	"author": "Bartek Szymanski",
-	"license": "ISC"
+    "name": "sass-dark-mode-theme-mixin",
+    "version": "1.0.0",
+    "description": "With these powerful **Sass mixins**, you can seamlessly add **light and dark mode** functionality to legacy Sass projects.",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "sass": "sass src/styles.scss dist/styles.css"
+    },
+    "keywords": [
+        "dark-mode",
+        "light-mode",
+        "dark theme",
+        "light theme",
+        "scss dark mode",
+        "sass dark mode",
+        "css dark mode",
+        "accessibility",
+        "sass",
+        "maintainability",
+        "scalability",
+        "legacy scss",
+        "legacy sass",
+        "mixins",
+        "mixin",
+        "sass mixin",
+        "scss mixin"
+    ],
+    "author": "Bartek Szymanski",
+    "license": "ISC"
 }

@@ -1,9 +1,9 @@
-const themeDarkName = "theme--dark";
-const themeLightName = "theme--light";
+const themeDarkName = 'theme--dark';
+const themeLightName = 'theme--light';
 
 function saveTheme(theme) {
-    localStorage.removeItem("theme");
-    localStorage.setItem("theme", theme);
+    localStorage.removeItem('theme');
+    localStorage.setItem('theme', theme);
 }
 
 function activateTheme(theme) {
@@ -20,13 +20,11 @@ function activateTheme(theme) {
 // ---
 // Prefer user settings over system settings
 
-const savedTheme = localStorage.getItem("theme");
+const savedTheme = localStorage.getItem('theme');
 
 // If there is no local storage value set
 if (savedTheme === null) {
-    const darkModeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-    );
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     // Set theme according to operating system settings
     if (darkModeMediaQuery.matches) {
         activateTheme(themeDarkName);
@@ -42,8 +40,8 @@ else {
 // Toggle theme using button
 // ---
 
-const btn = document.querySelector(".js-theme-toggle");
-btn.addEventListener("click", () => {
+const btn = document.querySelector('.js-theme-toggle');
+btn.addEventListener('click', () => {
     if (document.body.classList.contains(themeLightName)) {
         activateTheme(themeDarkName);
         saveTheme(themeDarkName);
@@ -56,7 +54,7 @@ btn.addEventListener("click", () => {
 // Switch theme dynamically when OS theme is changing
 // ---
 
-const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 darkModeMediaQuery.addListener((e) => {
     const darkModeOn = e.matches;
     if (darkModeOn) {

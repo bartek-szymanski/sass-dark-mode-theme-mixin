@@ -10,24 +10,27 @@ It's time to embrace better accessibility, and upgrade your users' experience!
 
 ```scss
 .button {
-	@include theme(
-		$background-color: ( // property
-			white, // light theme 
-			black, // dark theme 
-		)
-	);
-	@include theme(
-		$color: (
-			black,
-			white,
-		)
-	);
-	@include theme(
-		$border-color: (
-			black,
-			white,
-		)
-	);
+    @include theme(
+        $background-color: (
+            // property
+            white,
+            // light theme
+            black,
+            // dark theme
+        )
+    );
+    @include theme(
+        $color: (
+            black,
+            white,
+        )
+    );
+    @include theme(
+        $border-color: (
+            black,
+            white,
+        )
+    );
 }
 ```
 
@@ -37,44 +40,44 @@ It's time to embrace better accessibility, and upgrade your users' experience!
 // @param {string} $property : color, bg-color, fill, bg-img, border-color, box-shadow
 
 @mixin cssProperty($property) {
-	$property-value: var(--#{$property});
+    $property-value: var(--#{$property});
 
-	// Define shortcuts for long properties such as `background-color` and `background-image`.
-	@if $property == 'bg-color' {
-		background-color: $property-value;
-	} @else if $property == 'bg-img' {
-		background-image: url($property-value);
-	} @else {
-		// Set other properties normally.
-		#{$property}: $property-value;
-	}
+    // Define shortcuts for long properties such as `background-color` and `background-image`.
+    @if $property == 'bg-color' {
+        background-color: $property-value;
+    } @else if $property == 'bg-img' {
+        background-image: url($property-value);
+    } @else {
+        // Set other properties normally.
+        #{$property}: $property-value;
+    }
 }
 
 // Mixin to define theme-specific CSS variables
 // @param {list} $properties-list :
 
 @mixin theme($properties-list...) {
-	// Process the list of property-color pairs.
-	$properties: meta.keywords($properties-list);
+    // Process the list of property-color pairs.
+    $properties: meta.keywords($properties-list);
 
-	@each $property, $color in $properties {
-		$color1: list.nth($color, 1);
-		$color2: list.nth($color, 2);
+    @each $property, $color in $properties {
+        $color1: list.nth($color, 1);
+        $color2: list.nth($color, 2);
 
-		// Define CSS custom property for light theme at root scope.
-		@at-root #{selector.nest(':root .theme--light', &)} {
-			@content;
-			--#{$property}: #{$color1};
-		}
+        // Define CSS custom property for light theme at root scope.
+        @at-root #{selector.nest(':root .theme--light', &)} {
+            @content;
+            --#{$property}: #{$color1};
+        }
 
-		// Define CSS custom property for dark theme at root scope.
-		@at-root #{selector.nest(':root .theme--dark', &)} {
-			@content;
-			--#{$property}: #{$color2};
-		}
+        // Define CSS custom property for dark theme at root scope.
+        @at-root #{selector.nest(':root .theme--dark', &)} {
+            @content;
+            --#{$property}: #{$color2};
+        }
 
-		@include cssProperty($property);
-	}
+        @include cssProperty($property);
+    }
 }
 ```
 
