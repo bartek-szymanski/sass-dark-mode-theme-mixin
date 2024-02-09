@@ -11,12 +11,9 @@ It's time to embrace better accessibility, and upgrade your users' experience!
 ```scss
 .button {
     @include theme(
-        $background-color: (
-            // property
-            white,
-            // light theme
-            black,
-            // dark theme
+        $background-color: ( // property
+            white, // light theme
+            black, // dark theme
         )
     );
     @include theme(
